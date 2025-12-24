@@ -1,0 +1,57 @@
+rules:
+  - id: fetch-no-catch
+    language: javascript
+    pattern: "fetch("
+    message: "fetch() without error handling"
+    severity: warning
+    suggestion: "Add .catch() or use try/catch with await"
+    without: ".catch"
+
+  - id: innerhtml-xss
+    language: javascript
+    pattern: ".innerHTML ="
+    message: "innerHTML assignment is vulnerable to XSS"
+    severity: error
+    suggestion: "Use textContent or sanitize HTML"
+
+  - id: document-write
+    language: javascript
+    pattern: "document.write("
+    message: "document.write() is deprecated"
+    severity: warning
+    suggestion: "Use DOM manipulation instead"
+
+  - id: eval-dangerous
+    language: javascript
+    pattern: "eval("
+    message: "eval() executes arbitrary code"
+    severity: error
+    suggestion: "Avoid eval() or use safer alternatives"
+
+  - id: localstorage-sensitive
+    language: javascript
+    pattern: "localStorage.setItem("
+    message: "Storing data in localStorage may be insecure"
+    severity: warning
+    suggestion: "Don't store sensitive data in localStorage"
+
+  - id: console-log
+    language: javascript
+    pattern: "console.log("
+    message: "console.log() should not be in production"
+    severity: warning
+    suggestion: "Remove or use proper logging"
+
+  - id: new-function
+    language: javascript
+    pattern: "new Function("
+    message: "new Function() is similar to eval()"
+    severity: error
+    suggestion: "Avoid dynamic code execution"
+
+  - id: settimeout-string
+    language: javascript
+    pattern: "setTimeout(\""
+    message: "setTimeout with string executes eval()"
+    severity: error
+    suggestion: "Pass a function instead of string"

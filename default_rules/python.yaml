@@ -1,0 +1,73 @@
+rules:
+  - id: requests-no-timeout
+    language: python
+    pattern: "requests.get("
+    message: "requests.get() without timeout can hang forever"
+    severity: warning
+    suggestion: "Add timeout=30 parameter"
+    without: "timeout"
+
+  - id: requests-post-no-timeout
+    language: python
+    pattern: "requests.post("
+    message: "requests.post() without timeout can hang forever"
+    severity: warning
+    suggestion: "Add timeout=30 parameter"
+    without: "timeout"
+
+  - id: distutils-deprecated
+    language: python
+    pattern: "from distutils import"
+    message: "distutils is deprecated in Python 3.12+"
+    severity: warning
+    suggestion: "Use setuptools or packaging instead"
+
+  - id: pickle-insecure
+    language: python
+    pattern: "pickle.load("
+    message: "pickle.load() can execute arbitrary code"
+    severity: error
+    suggestion: "Use json or msgpack for untrusted data"
+
+  - id: yaml-unsafe-load
+    language: python
+    pattern: "yaml.load("
+    message: "yaml.load() without Loader is unsafe"
+    severity: error
+    suggestion: "Use yaml.safe_load() instead"
+    without: "Loader"
+
+  - id: subprocess-shell
+    language: python
+    pattern: "shell=True"
+    message: "subprocess with shell=True is vulnerable to injection"
+    severity: warning
+    suggestion: "Avoid shell=True or sanitize input"
+
+  - id: eval-dangerous
+    language: python
+    pattern: "eval("
+    message: "eval() executes arbitrary code"
+    severity: error
+    suggestion: "Use ast.literal_eval() or safer alternatives"
+
+  - id: exec-dangerous
+    language: python
+    pattern: "exec("
+    message: "exec() executes arbitrary code"
+    severity: error
+    suggestion: "Avoid exec() or carefully validate input"
+
+  - id: sql-format-string
+    language: python
+    pattern: "execute(f\""
+    message: "SQL with f-string is vulnerable to injection"
+    severity: error
+    suggestion: "Use parameterized queries"
+
+  - id: hardcoded-password
+    language: python
+    pattern: "password ="
+    message: "Potential hardcoded password"
+    severity: warning
+    suggestion: "Use environment variables or secrets manager"
