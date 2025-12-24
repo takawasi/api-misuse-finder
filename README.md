@@ -135,6 +135,10 @@ api-finder --rules my-rules.yaml ./src
 
 **Use this if**: You want quick, simple pattern detection with minimal setup.
 
+## More Tools
+
+See all dev tools: https://takawasi-social.com/en/
+
 ## License
 
 MIT
