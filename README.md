@@ -1,5 +1,7 @@
 # api-misuse-finder
 
+> **Documentation**: https://takawasi-social.com/tools/api-misuse-finder/
+
 Detect API misuse patterns in your codebase.
 
 Lightweight static analysis for common security and reliability issues.
